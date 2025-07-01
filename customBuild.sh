@@ -22,7 +22,7 @@ git commit -m "Build"
 git push -f origin live
 
 git checkout --orphan client
-rm -r $(ls -A)
+rm -r $(ls -A | grep -v .git)
 mv -v "../__temp"/* "./"
 rm -r "../__temp"
 git push -f origin client
