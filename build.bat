@@ -1,1 +1,1 @@
-C:\cygwin64\bin\bash customBuild.sh
+bash customBuild.sh

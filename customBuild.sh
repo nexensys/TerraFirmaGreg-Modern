@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash -vx
 pakku export
 
 git branch -D live
