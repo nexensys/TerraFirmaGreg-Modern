@@ -12,6 +12,7 @@ rm .gitignore
 # This line has problems
 
 mv -v "./build/.cache/serverpack"/* "./"
+mkdir "../__temp/"
 mv -v "./build/curseforge"/* "../__temp/"
 
 rm -r build
