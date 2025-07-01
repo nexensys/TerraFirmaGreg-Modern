@@ -23,6 +23,9 @@
         "resourcepacks"
     ],
     "projects": {
+        "figura": {
+            "side": "CLIENT"
+        },
         "ambient-environment": {
             "side": "CLIENT"
         },
