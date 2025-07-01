@@ -9,12 +9,12 @@ rm .github
 
 # This line has problems
 
-mv -v "$PWD/build/.cache/serverpack/*" "$PWD/"
+mv -v "./build/.cache/serverpack/" "./"
 
 rm -r build
 
 git add .
 git commit -m "Build"
-git push origin live
+git push origin live --allow-unrelated-histories
 
 git checkout dev
