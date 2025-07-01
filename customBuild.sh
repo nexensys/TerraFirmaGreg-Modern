@@ -2,6 +2,7 @@
 pakku export
 
 git branch -D live
+git branch -D client
 git checkout --orphan live
 
 rm -r $(ls -A | grep -v -e build -e .git)
@@ -11,7 +12,7 @@ rm .gitignore
 # This line has problems
 
 mv -v "./build/.cache/serverpack"/* "./"
-mv -v "./build/curseforge"/* "../__temp"
+mv -v "./build/curseforge"/* "../__temp/"
 
 rm -r build
 
