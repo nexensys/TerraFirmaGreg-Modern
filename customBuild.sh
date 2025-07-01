@@ -3,11 +3,12 @@ pakku export
 
 if [ `git branch --list live`]
 then
-git branch -d live
+git branch -D live
 fi
 git checkout --orphan live
 
 rm -r $(ls -A | grep -v -e build -e .git)
+rm .github
 
 # This line has problems
 
