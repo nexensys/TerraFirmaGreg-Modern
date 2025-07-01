@@ -5,7 +5,7 @@ git branch -D live
 git checkout --orphan live
 
 rm -r $(ls -A | grep -v -e build -e .git)
-rm .github
+rm -r .github
 
 # This line has problems
 
