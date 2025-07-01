@@ -9,7 +9,7 @@ rm .github
 
 # This line has problems
 
-mv -v "./build/.cache/serverpack/*" "./"
+mv -v "./build/.cache/serverpack"/* "./"
 
 rm -r build
 
