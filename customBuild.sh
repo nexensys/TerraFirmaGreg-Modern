@@ -1,10 +1,7 @@
 #!/usr/bin/env bash
 pakku export
 
-if [ `git branch --list live`]
-then
 git branch -D live
-fi
 git checkout --orphan live
 
 rm -r $(ls -A | grep -v -e build -e .git)
