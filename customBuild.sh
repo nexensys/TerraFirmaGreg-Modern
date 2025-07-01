@@ -15,6 +15,6 @@ rm -r build
 
 git add .
 git commit -m "Build"
-git push origin live --allow-unrelated-histories
+git push -f origin live
 
 git checkout dev
