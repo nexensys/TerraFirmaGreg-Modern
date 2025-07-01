@@ -9,6 +9,8 @@ git checkout --orphan live
 
 rm -r $(ls -A | grep -v -e build -e .git)
 
+# This line has problems
+
 mv -v "$PWD/build/.cache/serverpack/*" "$PWD/"
 
 rm -r build
