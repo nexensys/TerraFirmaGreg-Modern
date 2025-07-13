@@ -73,7 +73,8 @@ const registerGTCEUItemTags = (event) => {
     event.remove('forge:gems', 'gtceu:coke_gem')
 
 	// Rose Quartz Lens
-	event.add('forge:lenses/pink', 'gtceu:rose_quartz_lens')}
+	event.add('forge:lenses/pink', 'gtceu:rose_quartz_lens')
+}
 
 const registerGTCEUBlockTags = (event) => {
 
@@ -129,4 +130,5 @@ const registerGTCEUFluidTags = (event) => {
 	event.add('c:hidden_from_recipe_viewers', 'gtceu:molten_black_steel')
 	event.add('c:hidden_from_recipe_viewers', 'gtceu:molten_red_steel')
 	event.add('c:hidden_from_recipe_viewers', 'gtceu:molten_blue_steel')
+	event.add('c:hidden_from_recipe_viewers', 'gtceu:damascus_steel')
 }

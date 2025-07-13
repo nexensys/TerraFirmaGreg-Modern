@@ -1,13 +1,13 @@
 // priority: 0
 
 StartupEvents.registry('item', event => {
-	registerGTCEuItems(event)
-	registerTFGItems(event)
+    registerGTCEuItems(event)
+    registerTFGItems(event)
 })
 
 StartupEvents.registry('block', event => {
+    registerTFGBlocks(event)
 	registerBetterEndBlocks(event)
-	registerTFGBlocks(event)
 })
 
 StartupEvents.registry('entity_type', event => {
@@ -22,6 +22,7 @@ ItemEvents.modification(event => {
 	registerBeneathItemModifications(event)
 	registerConstructionWandsItemModifications(event)
 	registerCreateItemModifications(event)
+	registerGTCEuItemModifications(event)
 	registerMinecraftItemModifications(event)
 })
 

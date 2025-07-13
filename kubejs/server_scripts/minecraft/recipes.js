@@ -545,6 +545,11 @@ const registerMinecraftRecipes = (event) => {
 	event.recipes.tfc.welding('minecraft:bucket', 'tfc:metal/bucket/red_steel', 'tfc:metal/bucket/blue_steel', 6)
 		.id('tfg:anvil/vanilla_bucket')
 
+	event.recipes.greate.compacting('minecraft:bucket', ['tfc:metal/bucket/red_steel', 'tfc:metal/bucket/blue_steel', 'tfc:powder/flux'])
+		.heated()
+		.recipeTier(0)
+		.id('greate:compacting/vanilla_bucket')
+
 	event.recipes.gtceu.assembler('tfg:vanilla/bucket')
 		.itemInputs('#forge:plates/red_steel', '#forge:plates/blue_steel')
 		.circuit(6)
@@ -802,7 +807,7 @@ const registerMinecraftRecipes = (event) => {
 		.EUt(420)
 
 	event.recipes.gtceu.assembler('tfg:minecraft/elytra2')
-		.itemInputs('16x tfg:polycaprolactam_fabric', '16x #forge:foils/aluminium', '8x #forge:plates/ender_eye', '4x #forge:rings/aluminium', '2x #forge:rods/long/vanadium_steel', '2x #forge:small_springs/aluminium', '1x #forge:small_gears/aluminium')
+		.itemInputs('16x tfg:polycaprolactam_fabric', '16x #forge:foils/aluminium', '8x #forge:plates/ender_pearl', '4x #forge:rings/aluminium', '2x #forge:rods/long/vanadium_steel', '2x #forge:small_springs/aluminium', '1x #forge:small_gears/aluminium')
 		.circuit(4)
 		.itemOutputs(Item.of('minecraft:elytra', "{Damage:0}"))
 		.duration(1600)

@@ -21,9 +21,16 @@ const registerAdAstraFluidTags = (event) => {
 
 	event.add('ad_astra:tier_1_rover_fuel', 'gtceu:rocket_fuel')
 	event.add('ad_astra:tier_1_rover_fuel', 'gtceu:diesel')
+	event.add('ad_astra:tier_1_rover_fuel', 'gtceu:bio_diesel')
 	event.add('ad_astra:tier_1_rover_fuel', 'gtceu:cetane_boosted_diesel')
 	event.add('ad_astra:tier_1_rover_fuel', 'gtceu:gasoline')
 	event.add('ad_astra:tier_1_rover_fuel', 'gtceu:high_octane_gasoline')
+
+	event.add('ad_astra:freezes_in_space', 'tfc:salt_water')
+	event.add('ad_astra:freezes_in_space', 'tfc:spring_water')
+	event.add('ad_astra:evaporates_in_space', 'tfc:salt_water')
+	event.add('ad_astra:evaporates_in_space', 'tfc:spring_water')
+	event.add('ad_astra:evaporates_in_space', '#tfc:alcohols')
 
 	global.BREATHABLE_COMPRESSED_AIRS.forEach(x => {
 		event.add('ad_astra:zip_gun_propellants', x)
@@ -63,6 +70,17 @@ const registerAdAstraItemTags = (event) => {
 	event.add('tfg:ad_astra_etrium_blocks', 'ad_astra:encased_etrium_block')
 	event.add('tfg:ad_astra_etrium_blocks', 'ad_astra:etrium_plateblock')
 	event.add('tfg:ad_astra_etrium_blocks', 'ad_astra:etrium_panel')
+
+	event.add('tfc:foods', 'ad_astra:cheese')
+	event.add('tfc:foods/dairy', 'ad_astra:cheese')
+	event.add('tfc:foods/usable_in_sandwich', 'ad_astra:cheese')
+	event.add('tfc:foods/usable_in_jam_sandwich', 'ad_astra:cheese')
+	event.add('tfc:foods/usable_in_jam_sandwich_2', 'ad_astra:cheese')
+	event.add('firmalife:foods/cheeses', 'ad_astra:cheese')
+
+	event.add('ad_astra:space_suit_items', 'gtceu:quarktech_helmet')
+	event.add('ad_astra:space_suit_items', 'gtceu:quarktech_leggings')
+	event.add('ad_astra:space_suit_items', 'gtceu:quarktech_boots')
 }
 
 const registerAdAstraBlockTags = (event) => {
@@ -171,6 +189,8 @@ const registerAdAstraBlockTags = (event) => {
 	event.add('tfg:rock_slabs', 'ad_astra:venus_stone_slab')
 	event.add('tfg:rock_slabs', 'ad_astra:mercury_stone_slab')
 	event.add('tfg:rock_slabs', 'ad_astra:glacio_stone_slab')
+
+	event.add('ad_astra:destroyed_in_space', '#minecraft:saplings')
 }
 
 const registerAdAstraBiomeTags = (event) => {
@@ -183,6 +203,7 @@ const registerAdAstraBiomeTags = (event) => {
 		event.add('tfg:has_structure/cheese_ores', biome)
 		event.add('tfg:has_structure/moonbase', biome)
 		event.add('tfg:has_structure/moon_rabbit_houses', biome)
+		event.add('species:limpet_spawns', biome)
 	})
 }
 
@@ -191,7 +212,7 @@ const registerAdAstraEntityTypeTags = (event) => {
 	// moon
 	const MOON_ENTITIES = [
 		'tfc:rat',
-		'minecraft:rabbit',
+		'tfg:moon_rabbit',
 		'minecraft:enderman',
 		'minecraft:shulker',
 		'minecraft:shulker_bullet',

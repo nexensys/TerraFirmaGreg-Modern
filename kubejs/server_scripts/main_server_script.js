@@ -14,13 +14,13 @@ ServerEvents.tags('item', event => {
 	registerBeneathItemTags(event)
 	registerBetterEndItemTags(event)
 	registerChalkItemTags(event);
-	registerChiselAndBitsItemTags(event)
 	registerComputerCraftItemTags(event)
 	registerConstructionWandItemTags(event)
 	registerCreateItemTags(event)
 	registerCreateAdditionsItemTags(event)
 	registerCreateConnectedItemTags(event)
 	registerCreateDecoItemTags(event)
+	registerCreateFactoryLogisticsItemTags(event)
 	registerDiggerHelmetItemTags(event)
 	registerEndermanOverhaulItemTags(event)
 	registerEveryCompatItemTags(event)
@@ -59,7 +59,6 @@ ServerEvents.tags('block', event => {
 	registerAFCBlockTags(event)
 	registerAsticorCartsBlockTags(event)
 	registerBeneathBlockTags(event)
-	registerChiselAndBitsBlockTags(event)
 	registerComputerCraftBlockTags(event)
 	registerCreateBlockTags(event)
 	registerCreateAdditionsBlockTags(event)
@@ -142,6 +141,7 @@ TFCEvents.data(event => {
 	registerTFCDataForAdAstra(event);
 	registerTFCDataForArborFirmaCraft(event)
 	registerTFCDataForChalk(event);
+	registerTFCDataForCreateAddition(event);
 	registerTFCDataForFirmalife(event)
 	registerTFCDataForGTCEU(event)
 	registerTFCDataForImmersiveAircraft(event);
@@ -180,6 +180,10 @@ GTCEuServerEvents.bedrockOreVeins(event => {
 	registerGTCEUBedrockOreVeins(event)
 })
 
+GTCEuServerEvents.fluidVeins(event => {
+	registerGTCEUBedrockFluidVeins(event)
+})
+
 /**
  * Событие регистрации рецептов.
  * Срабатывает после инициализации датапаков и тегов.
@@ -198,7 +202,6 @@ ServerEvents.recipes(event => {
 	registerBetterEndRecipes(event)
 	registerBuildingGadgetsRecipes(event)
 	registerChalkRecipes(event);
-	registerChiselAndBitsRecipes(event)
 	registerComfortsRecipes(event);
 	registerComputerCraftRecipes(event)
 	//registerCccBridgeRecipes(event)
@@ -207,7 +210,9 @@ ServerEvents.recipes(event => {
 	registerCreateAdditionsRecipes(event)
 	registerCreateConnectedRecipes(event)
 	registerCreatedecoRecipes(event)
+	registerCreateFactoryLogisticsRecipes(event)
 	registerCreateHorsePowerBlockRecipes(event)
+	registerCreateHypertubeRecipes(event)
 	registerDiggerHelmetRecipes(event)
 	registerDomumOrnamentumRecipes(event)
 	registerEndermanOverhaulRecipes(event)
@@ -231,6 +236,7 @@ ServerEvents.recipes(event => {
 	registerMinecraftRecipes(event)
 	registerModernMarkingRecipes(event)
 	registerMoreRedRecipes(event)
+	registerProgrammedCircuitCardRecipes(event)
 	registerRailWaysRecipes(event)
 	registerRnrRecipes(event)
 	registerSophisticatedBackpacksRecipes(event)

@@ -48,6 +48,7 @@ const registerCreatedecoRecipes = (event) => {
 	event.remove({ id: 'createdeco:zinc_bars_overlay' })
 	event.remove({ id: 'createdeco:zinc_bars' })
 	event.remove({ id: 'createdeco:industrial_iron_block' })
+	event.remove({ id: 'createdeco:netherite_ingot' })
 	event.remove({ id: 'gtceu:assembler/bricks' })
 	event.remove({ type: 'minecraft:stonecutting', input: '#forge:storage_blocks/tin_alloy' })
 	event.remove({ type: 'minecraft:stonecutting', input: '#forge:storage_blocks/brass' })
@@ -176,7 +177,44 @@ const registerCreatedecoRecipes = (event) => {
 	//#endregion
 
 	event.stonecutting('4x createdeco:andesite_mesh_fence', '#forge:ingots/tin_alloy')
+	event.stonecutting('4x createdeco:andesite_catwalk', '#forge:ingots/tin_alloy')
+	event.stonecutting('2x createdeco:andesite_catwalk_stairs', '#forge:ingots/tin_alloy')
+	event.stonecutting('8x createdeco:andesite_catwalk_railing', '#forge:ingots/tin_alloy')
+	event.stonecutting('4x createdeco:andesite_facade', '#forge:ingots/tin_alloy')
+	event.stonecutting('3x createdeco:andesite_support_wedge', '#forge:ingots/tin_alloy')
 	event.stonecutting('4x createdeco:iron_mesh_fence', '#forge:ingots/wrought_iron')
+	event.stonecutting('4x createdeco:iron_catwalk', '#forge:ingots/wrought_iron')
+	event.stonecutting('2x createdeco:iron_catwalk_stairs', '#forge:ingots/wrought_iron')
+	event.stonecutting('8x createdeco:iron_catwalk_railing', '#forge:ingots/wrought_iron')
+	event.stonecutting('4x createdeco:iron_facade', '#forge:ingots/wrought_iron')
+	event.stonecutting('3x createdeco:iron_support_wedge', '#forge:ingots/wrought_iron')
+
+	event.shaped('8x createdeco:iron_catwalk_railing', [
+		'AAA',
+		'B B',
+		'B B'
+	], {
+		A: '#forge:plates/wrought_iron',
+		B: 'tfc:metal/bars/wrought_iron'
+	}).id('createdeco:iron_catwalk_railing')
+
+	event.shaped('4x createdeco:iron_catwalk', [
+		' A ',
+		'ABA',
+		' A '
+	], {
+		A: '#forge:plates/wrought_iron',
+		B: 'tfc:metal/bars/wrought_iron'
+	}).id('createdeco:iron_catwalk')
+
+	event.shaped('2x createdeco:iron_catwalk_stairs', [
+		' A',
+		'AB'
+	], {
+		A: 'createdeco:iron_catwalk',
+		B: 'tfc:metal/bars/wrought_iron'
+	}).id('createdeco:iron_catwalk_stairs')
+	
 
 	// #region Bars + Doors
 

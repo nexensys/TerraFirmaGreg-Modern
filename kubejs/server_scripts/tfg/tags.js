@@ -2,7 +2,14 @@ const registerTFGItemTags = (event) => {
 
 	registerTFGTrimTags(event)
 	registerFacadeWhitelistTags(event)
-
+    //crop stuff
+	event.add('tfc:seeds', 'tfg:sunflower_seeds')
+	event.add('tfc:seeds', 'tfg:rapeseed_seeds')
+	event.add('tfc:foods', 'tfg:roasted_sunflower_seeds')
+	event.add('tfc:compost_greens_high', 'tfg:rapeseed_product')
+	event.add('tfc:compost_greens_high', 'tfg:sunflower_product')
+	event.add('tfg:water_breathing_ingredients', 'tfg:rapeseed_product')
+	event.add('tfg:night_vision_ingredients', 'tfg:sunflower_product')
 	//temporary hidden items
 	event.add('c:hidden_from_recipe_viewers', 'tfg:geyser_source_small')
 	event.add('c:hidden_from_recipe_viewers', 'tfg:geyser_source')
@@ -137,9 +144,21 @@ const registerTFGItemTags = (event) => {
 	// Universal Circuits
 	global.UNIVERSAL_CIRCUIT_TIERS.forEach(tier => { event.add(`gtceu:circuits/${tier}`, `tfg:${tier}_universal_circuit`); })
 
+	// Crafting components
+	event.add('tfg:aluminium_oxide', '#forge:dusts/bauxite')
+	event.add('tfg:aluminium_oxide', '#forge:dusts/sapphire')
+	event.add('tfg:aluminium_oxide', '#forge:dusts/green_sapphire')
+
 	// Use either cast or wrought iron
-	event.add('forge:double_iron_ingots', '#forge:double_ingots/iron')
-	event.add('forge:double_iron_ingots', '#forge:double_ingots/wrought_iron')
+	event.add('tfg:any_iron_double_ingot', '#forge:double_ingots/iron')
+	event.add('tfg:any_iron_double_ingot', '#forge:double_ingots/wrought_iron')
+
+	event.add('tfg:any_iron_plate', '#forge:double_plates/iron')
+	event.add('tfg:any_iron_plate', '#forge:double_plates/wrought_iron')
+
+	event.add('tfg:any_bronze_frame', '#forge:frames/bronze')
+	event.add('tfg:any_bronze_frame', '#forge:frames/bismuth_bronze')
+	event.add('tfg:any_bronze_frame', '#forge:frames/black_bronze')
 
 	//#region Food
 	const RAW_MEATS = [
@@ -175,6 +194,8 @@ const registerTFGItemTags = (event) => {
 	});
 
 	//meal bags 
+	event.add('tfg:foil_packs', 'tfg:foil_pack');
+	event.add('tfg:foil_packs', 'tfg:clean_foil_pack')
 	event.add('tfg:foods/usable_in_meal_bag', '#tfc:foods/meats');
 	event.add('tfg:foods/usable_in_meal_bag', '#tfc:foods/grains');
 	event.add('tfg:foods/usable_in_meal_bag', '#tfc:foods/vegetables');
@@ -187,7 +208,6 @@ const registerTFGItemTags = (event) => {
 	// #region Space blocks
 	event.add('tfg:moon_plants', 'tfg:lunar_roots')
 	event.add('tfg:moon_plants', 'tfg:lunar_sprouts')
-	event.add('tfg:moon_plants', 'tfg:lunar_chorus_flower')
 	// #endregion
 
 	// #region 0.7.19 -> 0.9 conversion
@@ -293,7 +313,12 @@ const registerTFGItemTags = (event) => {
 const registerTFGBlockTags = (event) => {
 
 	event.add('minecraft:mineable/shovel', 'tfg:ash_pile')
+    //crop stuff
+	event.add('tfc:crops', 'tfg:rapeseed')
+	event.add('tfc:mineable_with_sharp_tool', 'tfg:rapeseed')
 
+	event.add('tfc:crops', 'tfg:sunflower')	
+	event.add('tfc:mineable_with_sharp_tool','tfg:sunflower')
 	// #region Nether blocks
 
 	event.add('minecraft:nether_carver_replaceables', 'tfg:rock/hardened_deepslate')

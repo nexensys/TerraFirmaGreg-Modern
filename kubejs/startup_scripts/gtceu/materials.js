@@ -60,6 +60,9 @@ const registerGTCEuMaterialModification = (event) => {
 		GTToolType.BUZZSAW,
 		GTToolType.SCYTHE,
 		GTToolType.WIRE_CUTTER,
+		GTToolType.WIRE_CUTTER_LV,
+		GTToolType.WIRE_CUTTER_HV,
+		GTToolType.WIRE_CUTTER_IV,
 		GTToolType.DRILL_LV,
 		GTToolType.DRILL_MV,
 		GTToolType.DRILL_HV,
@@ -140,7 +143,7 @@ const registerGTCEuMaterialModification = (event) => {
 	GTMaterials.RoseGold.addFlags(GENERATE_DOUBLE_INGOTS);
 	GTMaterials.Silver.addFlags(GENERATE_DOUBLE_INGOTS);
 	GTMaterials.Tin.addFlags(GENERATE_DOUBLE_INGOTS);
-	GTMaterials.Zinc.addFlags(GENERATE_DOUBLE_INGOTS);
+	GTMaterials.Zinc.addFlags(GENERATE_DOUBLE_INGOTS, GENERATE_BOLT_SCREW);
 	GTMaterials.SterlingSilver.addFlags(GENERATE_DOUBLE_INGOTS);
 	//
 	//        /* Имеют инструменты, броню TFC, двойные слитки */
@@ -228,8 +231,8 @@ const registerGTCEuMaterialModification = (event) => {
 	]).build());
 
 	GTMaterials.Copper.setProperty(PropertyKey.TOOL, ToolProperty.Builder.of(2.0, 1.5, 132, 2, metalTooling).build());
-	GTMaterials.BismuthBronze.setProperty(PropertyKey.TOOL, ToolProperty.Builder.of(2.7, 2.0, 188, 2, metalTooling).build());
-	GTMaterials.BlackBronze.setProperty(PropertyKey.TOOL, ToolProperty.Builder.of(3.1, 2.0, 194, 2, metalTooling).build());
+	GTMaterials.BismuthBronze.setProperty(PropertyKey.TOOL, ToolProperty.Builder.of(2.7, 2.0, 188, 2, metalTooling.concat(GTToolType.MORTAR)).build());
+	GTMaterials.BlackBronze.setProperty(PropertyKey.TOOL, ToolProperty.Builder.of(3.1, 2.0, 194, 2, metalTooling.concat(GTToolType.MORTAR)).build());
 	GTMaterials.BlackSteel.setProperty(PropertyKey.TOOL, ToolProperty.Builder.of(6.5, 4.5, 1228, 3, metalTooling).build());
 	// Cast iron tools don't make sense but gregtech shits itself if they're missing,
 	// so I'm just giving them terrible terrible stats
@@ -326,4 +329,7 @@ const registerGTCEuMaterialModification = (event) => {
 	rose_quartz.setProperty(PropertyKey.ORE, new $ORE_PROPERTY());
 	rose_quartz.getProperty(PropertyKey.ORE).setOreByProducts(rose_quartz, GTMaterials.Redstone, rose_quartz);
 	rose_quartz.setMaterialIconSet(GTMaterialIconSet.getByName('nether_quartz'))
+
+	GTCEuAPI.materialManager.getMaterial('tfg:kaolinite').setFormula("Al2Si2O5(OH)4", true)
+	GTCEuAPI.materialManager.getMaterial('tfg:vitrified_pearl').setFormula("(Al2Si2O5(OH)4)(BeK4N5)", true)
 }

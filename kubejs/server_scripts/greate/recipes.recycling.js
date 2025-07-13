@@ -358,7 +358,7 @@ function registerGreateRecyclingRecipes(event) {
 	event.recipes.gtceu.macerator('greate:andesite_alloy_mechanical_saw')
 		.itemInputs('greate:andesite_alloy_mechanical_saw')
 		.itemOutputs(
-			ChemicalHelper.get(TagPrefix.dust, GTMaterials.WroughtIron, 7),
+			ChemicalHelper.get(TagPrefix.dust, GTMaterials.WroughtIron, 5),
 			ChemicalHelper.get(TagPrefix.dust, GTMaterials.Wood, 1))
 		.duration(GTMaterials.WroughtIron.getMass() * 7)
 		.category(GTRecipeCategories.MACERATOR_RECYCLING)
@@ -367,7 +367,7 @@ function registerGreateRecyclingRecipes(event) {
 	event.recipes.gtceu.arc_furnace('greate:andesite_alloy_mechanical_saw')
 		.itemInputs('greate:andesite_alloy_mechanical_saw')
 		.itemOutputs(
-			ChemicalHelper.get(TagPrefix.ingot, GTMaterials.WroughtIron, 7),
+			ChemicalHelper.get(TagPrefix.ingot, GTMaterials.WroughtIron, 5),
 			ChemicalHelper.get(TagPrefix.dust, GTMaterials.Ash, 1))
 		.duration(GTMaterials.WroughtIron.getMass() * 7)
 		.category(GTRecipeCategories.ARC_FURNACE_RECYCLING)
@@ -377,7 +377,7 @@ function registerGreateRecyclingRecipes(event) {
 		.itemInputs('greate:steel_mechanical_saw')
 		.itemOutputs(
 			ChemicalHelper.get(TagPrefix.dust, GTMaterials.WroughtIron, 8),
-			ChemicalHelper.get(TagPrefix.dust, GTMaterials.CobaltBrass, 4),
+			ChemicalHelper.get(TagPrefix.dust, GTMaterials.BlackSteel, 2),
 			ChemicalHelper.get(TagPrefix.dust, GTMaterials.Copper, 4))
 		.duration(GTMaterials.CobaltBrass.getMass() * 16)
 		.category(GTRecipeCategories.MACERATOR_RECYCLING)
@@ -387,7 +387,7 @@ function registerGreateRecyclingRecipes(event) {
 		.itemInputs('greate:steel_mechanical_saw')
 		.itemOutputs(
 			ChemicalHelper.get(TagPrefix.ingot, GTMaterials.WroughtIron, 8),
-			ChemicalHelper.get(TagPrefix.ingot, GTMaterials.CobaltBrass, 4),
+			ChemicalHelper.get(TagPrefix.ingot, GTMaterials.BlackSteel, 2),
 			ChemicalHelper.get(TagPrefix.ingot, GTMaterials.AnnealedCopper, 4))
 		.duration(GTMaterials.CobaltBrass.getMass() * 16)
 		.category(GTRecipeCategories.ARC_FURNACE_RECYCLING)
@@ -632,6 +632,82 @@ function registerGreateRecyclingRecipes(event) {
 		.itemInputs('greate:titanium_mechanical_mixer')
 		.itemOutputs(ChemicalHelper.get(TagPrefix.ingot, GTMaterials.Titanium, 12))
 		.duration(GTMaterials.Titanium.getMass() * 12)
+		.category(GTRecipeCategories.ARC_FURNACE_RECYCLING)
+		.EUt(GTValues.VA[GTValues.LV])
+
+	// #endregion
+
+	// #region Mechanical press
+
+	event.recipes.gtceu.macerator('greate:steel_mechanical_press')
+		.itemInputs('greate:steel_mechanical_press')
+		.itemOutputs(
+			ChemicalHelper.get(TagPrefix.dust, GTMaterials.WroughtIron, 2),
+			ChemicalHelper.get(TagPrefix.dustTiny, GTMaterials.Steel, 20))
+		.duration(GTMaterials.WroughtIron.getMass() * 4)
+		.category(GTRecipeCategories.MACERATOR_RECYCLING)
+		.EUt(GTValues.VA[GTValues.ULV])
+
+	event.recipes.gtceu.arc_furnace('greate:steel_mechanical_press')
+		.itemInputs('greate:steel_mechanical_press')
+		.itemOutputs(
+			ChemicalHelper.get(TagPrefix.ingot, GTMaterials.WroughtIron, 2),
+			ChemicalHelper.get(TagPrefix.nugget, GTMaterials.Steel, 20))
+		.duration(GTMaterials.WroughtIron.getMass() * 4)
+		.category(GTRecipeCategories.ARC_FURNACE_RECYCLING)
+		.EUt(GTValues.VA[GTValues.LV])
+
+	event.recipes.gtceu.macerator('greate:aluminium_mechanical_press')
+		.itemInputs('greate:aluminium_mechanical_press')
+		.itemOutputs(
+			ChemicalHelper.get(TagPrefix.dust, GTMaterials.Aluminium, 9),
+			ChemicalHelper.get(TagPrefix.dust, GTMaterials.VanadiumSteel, 2))
+		.duration(GTMaterials.Aluminium.getMass() * 11)
+		.category(GTRecipeCategories.MACERATOR_RECYCLING)
+		.EUt(GTValues.VA[GTValues.ULV])
+
+	event.recipes.gtceu.arc_furnace('greate:aluminium_mechanical_press')
+		.itemInputs('greate:aluminium_mechanical_press')
+		.itemOutputs(
+			ChemicalHelper.get(TagPrefix.ingot, GTMaterials.Aluminium, 9),
+			ChemicalHelper.get(TagPrefix.ingot, GTMaterials.VanadiumSteel, 2))
+		.duration(GTMaterials.Aluminium.getMass() * 11)
+		.category(GTRecipeCategories.ARC_FURNACE_RECYCLING)
+		.EUt(GTValues.VA[GTValues.LV])
+
+	event.recipes.gtceu.macerator('greate:stainless_steel_mechanical_press')
+		.itemInputs('greate:stainless_steel_mechanical_press')
+		.itemOutputs(
+			ChemicalHelper.get(TagPrefix.dust, GTMaterials.StainlessSteel, 9),
+			ChemicalHelper.get(TagPrefix.dust, GTMaterials.BlueAlloy, 2))
+		.duration(GTMaterials.StainlessSteel.getMass() * 11)
+		.category(GTRecipeCategories.MACERATOR_RECYCLING)
+		.EUt(GTValues.VA[GTValues.ULV])
+
+	event.recipes.gtceu.arc_furnace('greate:stainless_steel_mechanical_press')
+		.itemInputs('greate:stainless_steel_mechanical_press')
+		.itemOutputs(
+			ChemicalHelper.get(TagPrefix.ingot, GTMaterials.StainlessSteel, 9),
+			ChemicalHelper.get(TagPrefix.ingot, GTMaterials.BlueAlloy, 2))
+		.duration(GTMaterials.StainlessSteel.getMass() * 11)
+		.category(GTRecipeCategories.ARC_FURNACE_RECYCLING)
+		.EUt(GTValues.VA[GTValues.LV])
+
+	event.recipes.gtceu.macerator('greate:titanium_mechanical_press')
+		.itemInputs('greate:titanium_mechanical_press')
+		.itemOutputs(
+			ChemicalHelper.get(TagPrefix.dust, GTMaterials.Titanium, 9),
+			ChemicalHelper.get(TagPrefix.dust, GTMaterials.Ultimet, 2))
+		.duration(GTMaterials.Titanium.getMass() * 11)
+		.category(GTRecipeCategories.MACERATOR_RECYCLING)
+		.EUt(GTValues.VA[GTValues.ULV])
+
+	event.recipes.gtceu.arc_furnace('greate:titanium_mechanical_press')
+		.itemInputs('greate:titanium_mechanical_press')
+		.itemOutputs(
+			ChemicalHelper.get(TagPrefix.ingot, GTMaterials.Titanium, 9),
+			ChemicalHelper.get(TagPrefix.ingot, GTMaterials.Ultimet, 2))
+		.duration(GTMaterials.Titanium.getMass() * 11)
 		.category(GTRecipeCategories.ARC_FURNACE_RECYCLING)
 		.EUt(GTValues.VA[GTValues.LV])
 

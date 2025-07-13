@@ -28,7 +28,7 @@ const registerGTCEURecipes = (event) => {
 		.EUt(30)
 
 	//#endregion
-
+		
 	//#region Выход: Кварцевый песок
 
 	event.shaped('gtceu:quartz_sand_dust', [
@@ -58,6 +58,10 @@ const registerGTCEURecipes = (event) => {
 		.itemOutputs('2x tfc:powder/flux')
 		.duration(30)
 		.EUt(2)
+
+	event.recipes.greate.pressing('2x tfc:powder/flux', '#tfc:fluxstone')
+		.recipeTier(0)
+		.id('greate:pressing/flux')
 
 	//#region Выход: Диоксид силикона
 
@@ -625,7 +629,7 @@ const registerGTCEURecipes = (event) => {
 	// #endregion
 
 	// #region Add all glass colors to macerator/hammer
-	event.remove({ id: "gtceu:macerator/macerate_glass" });
+	removeMaceratorRecipe(event, 'macerate_glass');
 	event.recipes.gtceu.macerator("gtceu:macerator/macerate_glass")
 		.itemInputs(
 			"#forge:glass"
@@ -634,7 +638,7 @@ const registerGTCEURecipes = (event) => {
 		.duration(20)
 		.EUt(2);
 
-	event.remove({ id: "gtceu:macerator/macerate_glass_pane" });
+	removeMaceratorRecipe(event, 'macerate_glass_pane');
 	event.recipes.gtceu.macerator("gtceu:macerator/macerate_glass_pane")
 		.itemInputs(
 			"#forge:glass_panes"
@@ -786,7 +790,7 @@ const registerGTCEURecipes = (event) => {
 
 		// Macerator
 		global.TFC_HARDWOOD_TYPES.forEach(wood => {
-			event.remove(`gtceu:macerator/macerate_wood/hanging_sign/${metal.getName()}/${wood}`)
+			removeMaceratorRecipe(event, `macerate_wood/hanging_sign/${metal.getName()}/${wood}`)
 			event.recipes.gtceu.macerator(`gtceu:macerator/macerate_wood/hanging_sign/${metal.getName()}/${wood}`)
 				.itemInputs(`tfc:wood/hanging_sign/${metal.getName()}/${wood}`)
 				.itemOutputs('gtceu:hardwood_dust')
@@ -797,7 +801,7 @@ const registerGTCEURecipes = (event) => {
 		})
 
 		global.TFC_SOFTWOOD_TYPES.forEach(wood => {
-			event.remove(`gtceu:macerator/macerate_wood/hanging_sign/${metal.getName()}/${wood}`)
+			removeMaceratorRecipe(event, `macerate_wood/hanging_sign/${metal.getName()}/${wood}`)
 			event.recipes.gtceu.macerator(`gtceu:macerator/macerate_wood/hanging_sign/${metal.getName()}/${wood}`)
 				.itemInputs(`tfc:wood/hanging_sign/${metal.getName()}/${wood}`)
 				.itemOutputs('gtceu:wood_dust')
@@ -1228,6 +1232,58 @@ const registerGTCEURecipes = (event) => {
 		.itemOutputs('gtceu:steel_tank_valve')
 		.duration(200)
 		.EUt(GTValues.VA[GTValues.ULV])
+
+	//#endregion
+
+	event.smelting('minecraft:iron_ingot', '#forge:ingots/wrought_iron')
+		.id('tfg:revert_wrought_iron_ingot')
+
+	event.replaceOutput({ id: 'gtceu:distillery/distill_biomass_to_water' }, 'gtceu:wood_dust', 'gtceu:carbon_dust')
+	event.replaceOutput({ id: 'gtceu:distillery/distill_biomass_to_ethanol' }, 'gtceu:wood_dust', 'gtceu:carbon_dust')
+	event.replaceOutput({ id: 'gtceu:distillation_tower/distill_biomass' }, 'gtceu:wood_dust', 'gtceu:carbon_dust')
+
+	//#region Circuit Fixes
+
+	//Adds circuit #1 to the tetrafluoroethylene_from_chloroform recipe
+		event.findRecipes({ id: "gtceu:chemical_reactor/tetrafluoroethylene_from_chloroform" }).forEach(recipe => {
+			const inputs = recipe.json.get("inputs");
+			const itemArray = inputs.has("item") ? Java.from(inputs.get("item")) : [];
+
+			itemArray.push({
+				content: {
+					type: "gtceu:circuit",
+					configuration: 1
+				},
+				chance: 0,
+				maxChance: 10000,
+				tierChanceBoost: 0
+			});
+
+			inputs.add("item", itemArray);
+			recipe.json.add("inputs", inputs);
+		});
+
+	//#endregion
+
+	//#region Chemical Reaction for Solar Panel
+
+	event.recipes.gtceu.chemical_reactor('tfg:chlorine_pentafluoride')
+		.inputFluids(Fluid.of('gtceu:fluorine', 5000), Fluid.of('gtceu:chlorine', 1000))
+		.outputFluids(Fluid.of('tfg:chlorine_pentafluoride', 1000))
+		.duration(20*10)
+		.EUt(GTValues.VA[GTValues.HV])
+
+	event.recipes.gtceu.chemical_reactor('tfg:chloryl_fluoride')
+		.inputFluids(Fluid.of('tfg:chlorine_pentafluoride', 1000), Fluid.of('minecraft:water', 2000))
+		.outputFluids(Fluid.of('tfg:chloryl_fluoride', 1000), Fluid.of('gtceu:hydrofluoric_acid', 4000))
+		.duration(20*10)
+		.EUt(GTValues.VA[GTValues.HV])
+
+	event.recipes.gtceu.large_chemical_reactor('tfg:solar_coolant')
+		.inputFluids(Fluid.of('tfg:chloryl_fluoride', 3000), Fluid.of('gtceu:helium_3', 8000), Fluid.of('minecraft:water', 8000))
+		.outputFluids(Fluid.of('tfg:solar_coolant', 1000), Fluid.of('gtceu:hydrofluoric_acid', 3000), Fluid.of('gtceu:hypochlorous_acid', 3000))
+		.duration(20*10)
+		.EUt(GTValues.VA[GTValues.EV])
 
 	//#endregion
 }

@@ -245,13 +245,37 @@ const registerAdAstraRecipes = (event) => {
 		E: '#gtceu:circuits/mv'
 	}).id('tfg:oxygen_sensor')
 
-	event.shaped('ad_astra:solar_panel', [
+	event.recipes.gtceu.laser_engraver('ad_astra:photovoltaic_etrium_cell_silicon')
+		.itemInputs('gtceu:silicon_wafer', '#forge:glass_panes', 'gtceu:carbon_fiber_plate')
+		.itemOutputs('ad_astra:photovoltaic_etrium_cell')
+		.EUt(GTValues.VA[GTValues.MV])
+		.duration(100)
+
+	event.recipes.gtceu.laser_engraver('ad_astra:photovoltaic_etrium_cell_phosphorous')
+		.itemInputs('gtceu:phosphorus_wafer', '#forge:glass_panes', 'gtceu:carbon_fiber_plate')
+		.itemOutputs('2x ad_astra:photovoltaic_etrium_cell')
+		.EUt(GTValues.VA[GTValues.MV])
+		.duration(100)
+
+	event.recipes.gtceu.laser_engraver('ad_astra:photovoltaic_etrium_cell_naquadah')
+		.itemInputs('gtceu:naquadah_wafer', '#forge:glass_panes', 'gtceu:carbon_fiber_plate')
+		.itemOutputs('4x ad_astra:photovoltaic_etrium_cell')
+		.EUt(GTValues.VA[GTValues.MV])
+		.duration(100)
+
+	event.recipes.gtceu.laser_engraver('ad_astra:photovoltaic_etrium_cell_neutronium')
+		.itemInputs('gtceu:neutronium_wafer', '#forge:glass_panes', 'gtceu:carbon_fiber_plate')
+		.itemOutputs('8x ad_astra:photovoltaic_etrium_cell')
+		.EUt(GTValues.VA[GTValues.MV])
+		.duration(100)
+
+	event.shaped('2x ad_astra:solar_panel', [
 		'AAA',
-		'BCE',
-		' F '
+		' C ',
+		'BFE'
 	], {
-		A: 'gtceu:solar_panel',
-		B: '#gtceu:batteries/lv',
+		A: 'ad_astra:photovoltaic_etrium_cell',
+		B: '#gtceu:batteries/mv',
 		C: '#forge:rods/long/aluminium',
 		E: '#gtceu:circuits/mv',
 		F: 'gtceu:mv_machine_hull'
@@ -301,24 +325,6 @@ const registerAdAstraRecipes = (event) => {
 	//#endregion
 
 
-	//#region FE cables
-
-	//event.recipes.gtceu.assembler('tfg:ad_astra_steel_cable')
-	//	.itemInputs('#forge:single_wires/manganese_phosphide', '#forge:plates/polyethylene')
-	//	.inputFluids(Fluid.of('gtceu:redstone', 144))
-	//	.itemOutputs('ad_astra:steel_cable')
-	//	.duration(60)
-	//	.EUt(120)
-
-	//event.recipes.gtceu.assembler('tfg:ad_astra_desh_cable')
-	//	.itemInputs('#forge:single_wires/magnesium_diboride', '#forge:plates/polyvinyl_chloride')
-	//	.inputFluids(Fluid.of('gtceu:redstone', 288))
-	//	.itemOutputs('ad_astra:desh_cable')
-	//	.duration(60)
-	//	.EUt(480)
-
-	//#endregion
-
 	//#region Колесо
 
 	event.shaped('ad_astra:white_flag', [
@@ -351,6 +357,24 @@ const registerAdAstraRecipes = (event) => {
 	})
 
 	//#endregion
+
+	// #region Ingots
+
+	event.recipes.gtceu.chemical_bath('tfg:desh_cool_down_water')
+		.itemInputs('#forge:hot_ingots/desh')
+		.inputFluids(Fluid.of('minecraft:water', 100))
+		.itemOutputs('#forge:ingots/desh')
+		.duration(400)
+		.EUt(120)
+
+	event.recipes.gtceu.chemical_bath('tfg:desh_cool_down_distilled_water')
+		.itemInputs('#forge:hot_ingots/desh')
+		.inputFluids(Fluid.of('gtceu:distilled_water', 100))
+		.itemOutputs('#forge:ingots/desh')
+		.duration(250)
+		.EUt(120)
+
+	// #endregion
 
 	//#region Воздушный пистолет
 
@@ -390,7 +414,7 @@ const registerAdAstraRecipes = (event) => {
 			ingredient: {
 				fluid: 'gtceu:air'
 			},
-			millibuckets: 100
+			millibuckets: 1
 		},
 		result: {
 			fluid: 'ad_astra:oxygen',
@@ -411,7 +435,7 @@ const registerAdAstraRecipes = (event) => {
 			},
 			result: {
 				fluid: 'ad_astra:oxygen',
-				millibuckets: 200
+				millibuckets: 1000
 			}
 		}).id(`ad_astra:oxygen_loading/air_from_${x.split(':')[1]}`)
 	})
@@ -652,7 +676,20 @@ const registerAdAstraRecipes = (event) => {
 			{ count: 4, ingredient: { item: "minecraft:glowstone_dust" }},
 			{ count: 1, ingredient: { item: "ad_astra:launch_pad" }}
 		],
-		structure: "tfg:earth_orbit/space_station"
+		structure: "tfg:orbit/space_station"
 	})
+
+	event.custom({
+		type: "ad_astra:space_station_recipe",
+		dimension: "ad_astra:moon_orbit",
+		ingredients: [
+			{ count: 43, ingredient: { item: "gtceu:aluminium_frame" }},
+			{ count: 24, ingredient: { item: "gtceu:glass_plate" }},
+			{ count: 4, ingredient: { item: "minecraft:glowstone_dust" }},
+			{ count: 1, ingredient: { item: "ad_astra:launch_pad" }}
+		],
+		structure: "tfg:orbit/space_station"
+	})
+
 	//#endregion
 }
